@@ -101,12 +101,12 @@ export default function HeroCanvas() {
       <canvas ref={canvasRef} className="hero-canvas" />
       <div className="hero-content-overlay">
         <h1 className="hero-title-lusion">
-          <span className="hero-title-line">Where Creative Ideas</span>
-          <span className="hero-title-line hero-title-italic">Become Immersive Experiences</span>
+          <span className="hero-title-line">Theory of Automata</span>
+          <span className="hero-title-line hero-title-italic">& Formal Languages</span>
         </h1>
         <p className="hero-tagline">
-          We create <strong>3D visual storytelling</strong> and interactive web experiences<br />
-          that help brands stand out
+          An interactive web experience to visualize <strong>Context-Free Grammars</strong> <br />
+          and convert them into Chomsky & Greibach Normal Forms.
         </p>
       </div>
       <div className="hero-bottom-fade" />

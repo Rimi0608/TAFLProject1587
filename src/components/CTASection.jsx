@@ -13,7 +13,7 @@ export default function CTASection({ onOpenConverter }) {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          READY TO EXPLORE?
+          THEORY INTO PRACTICE
         </motion.span>
 
         <motion.h2
@@ -23,8 +23,8 @@ export default function CTASection({ onOpenConverter }) {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          Where Creative Ideas<br />
-          Become <em>Immersive</em> Experiences
+          Where Formal Languages<br />
+          Become <em>Interactive</em> Visualizations
         </motion.h2>
 
         <motion.p
@@ -34,8 +34,7 @@ export default function CTASection({ onOpenConverter }) {
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          Transform any Context-Free Grammar into CNF or GNF with step-by-step
-          transparency, real-time CYK parsing, and one-click LaTeX export.
+          Skip the tedious manual transformations. Enter your CFG and let mathematical precision handle the rest, with step-by-step transparency and one-click LaTeX export.
         </motion.p>
 
         <motion.button

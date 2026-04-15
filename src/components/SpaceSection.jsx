@@ -129,7 +129,7 @@ export default function SpaceSection({ onScrollDown }) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            STEP INTO A NEW WORLD AND LET YOUR IMAGINATION RUN WILD
+            DEMYSTIFY COMPLEX GRAMMARS WITH VISUAL PARSING
           </motion.h2>
           <motion.p
             className="space-subtext"
@@ -138,7 +138,7 @@ export default function SpaceSection({ onScrollDown }) {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Is your big idea ready to go wild? Let's work together!
+            Experience theory in motion. Watch real-time algorithms parse strings in a unified, interactive space.
           </motion.p>
         </div>
 
@@ -162,29 +162,33 @@ export default function SpaceSection({ onScrollDown }) {
           className="space-float-icon"
           animate={{ y: [-10, 10, -10], rotate: [0, 15, -10, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ fontFamily: 'Times New Roman, serif', fontStyle: 'italic', color: '#4A80F0', textShadow: '0 0 10px rgba(74, 128, 240, 0.5)' }}
         >
-          ❤️
+          ∑
         </motion.span>
         <motion.span
           className="space-float-icon space-float-icon--2"
           animate={{ y: [10, -10, 10], rotate: [0, -10, 15, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ fontFamily: 'Times New Roman, serif', fontStyle: 'italic', color: '#B8F2E6', textShadow: '0 0 10px rgba(184, 242, 230, 0.5)' }}
         >
-          😊
+          ε
         </motion.span>
         <motion.span
           className="space-float-icon space-float-icon--3"
           animate={{ y: [-8, 12, -8], rotate: [-5, 10, -5] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ fontFamily: 'Times New Roman, serif', fontStyle: 'italic', color: '#E84393', textShadow: '0 0 10px rgba(232, 67, 147, 0.5)' }}
         >
-          💋
+          δ
         </motion.span>
         <motion.span
           className="space-float-icon space-float-icon--4"
           animate={{ y: [5, -15, 5] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ fontFamily: 'Times New Roman, serif', fontStyle: 'italic', color: '#F5F5F5', textShadow: '0 0 10px rgba(245, 245, 245, 0.5)' }}
         >
-          ⭐
+          Γ
         </motion.span>
       </div>
     </section>

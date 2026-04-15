@@ -11,7 +11,7 @@ const transitionAttr = { duration: 0.4, ease: [0.16, 1, 0.3, 1] };
 
 export function Home() {
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="home-container" style={{ paddingBottom: '60px' }}>
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="home-container colorful-bg-home" style={{ padding: '40px', paddingBottom: '60px', borderRadius: '28px', border: '1px solid rgba(184, 242, 230, 0.3)' }}>
       <div className="hero-landing">
         <h1 className="heading-xl">
           CFG Conversion<br />
@@ -122,7 +122,7 @@ export function Home() {
 
 export function AboutCFG() {
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel colorful-bg-home" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
       <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)' }}>About Context-Free Grammar (CFG)</h2>
       <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '16px' }}>
         A Context-Free Grammar is a fundamental structure in formal language theory, utilized mathematically to generate strings in a specific formal language. A standard CFG is formally defined as a 4-tuple <strong style={{ color: 'var(--accent-secondary)' }}>G = (V, T, P, S)</strong> where:
@@ -143,8 +143,8 @@ export function AboutCFG() {
 
 export function WhatIsCNF() {
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
-      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)' }}>What is CNF?</h2>
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel colorful-bg-cnf" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)', textShadow: '0 0 10px rgba(74, 128, 240, 0.4)' }}>What is CNF?</h2>
       <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '16px' }}>
         Chomsky Normal Form (CNF) is a highly restrictive, computationally optimal structure for context-free grammars. It enforces a mathematically uniform structure, guaranteeing that syntax trees formulated under CNF are pure binary trees. A grammar resides strictly in Chomsky Normal Form if, and only if, every single production rule assumes one of two identical configurations:
       </p>
@@ -164,8 +164,8 @@ export function WhatIsCNF() {
 
 export function StepsCNF() {
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
-      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)' }}>Steps of converting CFG to CNF</h2>
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel colorful-bg-cnf" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)', textShadow: '0 0 10px rgba(74, 128, 240, 0.4)' }}>Steps of converting CFG to CNF</h2>
       <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
         The conversion to Chomsky Normal Form follows a mathematically rigorous 6-step pipeline to ensure the grammar is reduced to binary and terminal productions:
       </p>
@@ -220,8 +220,8 @@ export function StepsCNF() {
 
 export function WhatIsGNF() {
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
-      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)' }}>What is GNF?</h2>
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel colorful-bg-gnf" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)', textShadow: '0 0 10px rgba(232, 67, 147, 0.4)' }}>What is GNF?</h2>
       <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '16px' }}>
         Greibach Normal Form (GNF) is a specialized configuration where every production rule starts strictly with exactly one terminal. This structure is essential for constructing Pushdown Automata and efficient Top-Down parsing.
       </p>
@@ -243,8 +243,8 @@ export function WhatIsGNF() {
 
 export function StepsGNF() {
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
-      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)' }}>Steps of converting CFG to GNF</h2>
+    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={transitionAttr} className="glass-panel colorful-bg-gnf" style={{ padding: '32px', maxWidth: '800px', margin: '0 auto' }}>
+      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '16px', color: 'var(--text-main)', textShadow: '0 0 10px rgba(232, 67, 147, 0.4)' }}>Steps of converting CFG to GNF</h2>
       <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
         Achieving Greibach Normal Form involves a complex 9-step procedure utilizing variable ordering and recursive substitution:
       </p>
