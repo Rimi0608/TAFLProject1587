@@ -1,9 +1,9 @@
-# 📚 Theory of Automata and Formal Languages (TAFL)
-## Project: Chomsky Normal Form (CNF) and Greibach Normal Form (GNF) Converter
+#  Theory of Automata and Formal Languages (TAFL)
+## Project: Context Free Grammar to Chomsky Normal Form (CNF) and Greibach Normal Form (GNF) Converter
 
 ---
 
-### 👨‍💻 Author Information
+###  Author Information
 - **Name:** Rishab Kumar
 - **Roll No:** 2024UCS1587
 - **Subject:** Theory of Automata and Formal Languages (TAFL)
@@ -11,14 +11,14 @@
 
 ---
 
-### 📖 Description
+###  Description
 This project was developed as a comprehensive, product-grade tool to help students, teaching assistants, and researchers understand the mathematical transformations required to convert a Context-Free Grammar (CFG) into standardized forms. The application performs rigorous transformations and displays every intermediate grammar step, providing a clear visual path from an arbitrary CFG to its **Chomsky Normal Form (CNF)** or **Greibach Normal Form (GNF)**.
 
 Beyond simple conversion, the portal features a **CYK Engine Testing Playground** to verify string membership, visualizes complex syntax via **Adaptive Parse Trees**, and offers a **1-Click Academic Export** generating mathematically flawless LaTeX formatting for immediate use in research papers and homework assignments.
 
 ---
 
-### ✨ Key Features
+###  Key Features
 *   **Dual Pipeline Conversion**:
     *   **6-Step CNF Pipeline**: Start Symbol Augmentation, ε-Elimination, Unit Removal, Useless Symbol Removal, Terminal Replacement, and Binarization.
     *   **9-Step GNF Pipeline**: Full Greibach ordering including variable indexing ($A_i < A_j$), indirect cycle detection, direct left-recursion removal ($Z_i$), and forward/backward substitution.
@@ -30,11 +30,11 @@ Beyond simple conversion, the portal features a **CYK Engine Testing Playground*
 
 ---
 
-### 🚀 Getting Started
-
+###  Getting Started
+Deploy Link - https://rimi0608.github.io/TAFLProject1587/
+Repository Link - https://github.com/Rimi0608/TAFLProject1587/
 #### 1. Clone the Repository
-
-
+using git clone <https://github.com/Rimi0608/TAFLProject1587/>
 #### 2. Install Dependencies
 Ensure you have [Node.js](https://nodejs.org/) installed on your system.
 ```bash
@@ -55,7 +55,7 @@ npm run build
 
 ---
 
-### 🧮 Conversion Logic (Pipelines)
+###  Conversion Logic (Pipelines)
 
 #### Chomsky Normal Form (CNF) Logic
 1.  **Preprocessing**: Ensures start variable is isolated.
@@ -74,5 +74,5 @@ npm run build
 
 ---
 
-### ⚖️ License
+###  License
 This project is for educational purposes. Developed by Rishab Kumar.
