@@ -6,7 +6,7 @@ import CFGInput from './CFGInput';
 import GrammarStep from './GrammarStep';
 import StringParser from './StringParser';
 import { Home, AboutCFG, WhatIsCNF, StepsCNF, WhatIsGNF, StepsGNF } from './InfoPages';
-import { convertToCNF, convertToGNF } from '../utils/converter';
+import { convertToCNF, convertToGNF, convertToGNFDirect } from '../utils/converter';
 
 const overlayVariants = {
   hidden: { opacity: 0 },
@@ -44,7 +44,11 @@ export default function ConverterModal({ isOpen, onClose, initialPage }) {
 
     setTimeout(() => {
       try {
-        const outputSteps = type === 'gnf' ? convertToGNF(grammarConfig) : convertToCNF(grammarConfig);
+        let outputSteps;
+        if (type === 'gnf') outputSteps = convertToGNF(grammarConfig);
+        else if (type === 'gnf-direct') outputSteps = convertToGNFDirect(grammarConfig);
+        else outputSteps = convertToCNF(grammarConfig);
+
         setSteps(outputSteps);
         if (outputSteps.length > 0) {
           if (type === 'cnf') {
@@ -148,7 +152,7 @@ export default function ConverterModal({ isOpen, onClose, initialPage }) {
                       {isLoading ? (
                         <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="empty-state">
                           <div className="spin-ring" />
-                          <h3>{lastAction === 'gnf' ? 'Converting to GNF…' : 'Converting to CNF…'}</h3>
+                          <h3>{(lastAction === 'gnf' || lastAction === 'gnf-direct') ? 'Converting to GNF…' : 'Converting to CNF…'}</h3>
                           <p style={{ fontSize: '0.88rem' }}>Applying formal transformations, please wait…</p>
                         </motion.div>
                       ) : steps.length === 0 ? (

@@ -575,6 +575,115 @@ export function convertToGNF(input) {
   return steps;
 }
 
+export function convertToGNFDirect(input) {
+  let g = (typeof input === 'string') ? parseTextGrammar(input) : configToG(input);
+  resetVars(g);
+  const steps = [];
+
+  // Step 1: Preprocessing
+  addS0(g);
+  steps.push(buildStep('Step 1: Preprocessing', 'Initial grammar preparation and addition of a new start symbol S0.', null, g));
+
+  // Step 2: ε-elimination
+  doEpsilonElim(g);
+  steps.push(buildStep('Step 2: ε-elimination', 'Eliminated all ε-productions except possibly from the start symbol.', null, g));
+
+  // Step 3: Unit removal
+  elimUnit(g);
+  steps.push(buildStep('Step 3: Unit removal', 'Eliminated all unit productions via transitive substitution.', null, g));
+
+  // Step 4: Useless symbol removal
+  elimUseless(g);
+  steps.push(buildStep('Step 4: Useless symbol removal', 'Cleaned up non-generating and unreachable symbols.', null, g));
+
+  // Step 5: Terminal Replacement
+  terminalReplace(g);
+  steps.push(buildStep('Step 5: Terminal Replacement', 'Replaced terminals with variables to prepare for direct GNF conversion, skipping CNF binarization.', null, g));
+
+  // Step 6: Variable ordering
+  const order = [g.start, ...g.variables.filter(v => v !== g.start)];
+  steps.push(buildStep('Step 6: Variable ordering', `Assigned order to variables: ${order.join(' < ')}.`, null, g));
+
+  // Step 7: Left recursion removal
+  for (let i = 0; i < order.length; i++) {
+    const Ai = order[i];
+    // Substitutions for i < j
+    for (let j = 0; j < i; j++) {
+      const Aj = order[j];
+      const ps = g.productions.get(Ai) || [];
+      const nextPs = [];
+      for (const p of ps) {
+        if (p[0] === Aj) {
+          const ajPs = g.productions.get(Aj) || [];
+          for (const sp of ajPs) nextPs.push([...sp, ...p.slice(1)]);
+        } else nextPs.push(p);
+      }
+      g.productions.set(Ai, nextPs);
+      dedup(g);
+    }
+    // Direct left recursion removal
+    const ps = g.productions.get(Ai) || [];
+    const lr = ps.filter(p => p[0] === Ai);
+    const nlr = ps.filter(p => p[0] !== Ai);
+    if (lr.length > 0) {
+      const Zi = freshVar('Z');
+      const aiPs = [], ziPs = [];
+      for (const b of nlr) { aiPs.push(b); aiPs.push([...b, Zi]); }
+      for (const a of lr) { const suf = a.slice(1); ziPs.push(suf); ziPs.push([...suf, Zi]); }
+      g.productions.set(Ai, aiPs);
+      g.productions.set(Zi, ziPs);
+      updateSets(g);
+    }
+  }
+  steps.push(buildStep('Step 7: Left recursion removal', 'Eliminated direct and indirect left recursion by following the variable ordering.', null, g));
+
+  // Step 8: Substitution of leading variables
+  for (let i = order.length - 2; i >= 0; i--) {
+    const Ai = order[i];
+    const ps = g.productions.get(Ai) || [];
+    const nextPs = [];
+    for (const p of ps) {
+      if (g.variables.includes(p[0]) && order.indexOf(p[0]) > i) {
+        const Aj = p[0];
+        const ajPs = g.productions.get(Aj) || [];
+        for (const sp of ajPs) nextPs.push([...sp, ...p.slice(1)]);
+      } else nextPs.push(p);
+    }
+    g.productions.set(Ai, nextPs);
+    dedup(g);
+  }
+  steps.push(buildStep('Step 8: Substitution of leading variables', 'Substituted leading non-terminals with their productions to ensure every rule starts with a terminal or a variable of higher rank.', null, g));
+
+  // Step 9: Final GNF enforcement
+  let anyChanged = true, limit = 15;
+  while (anyChanged && limit-- > 0) {
+    anyChanged = false;
+    for (const [v, ps] of g.productions) {
+      const nextPs = [];
+      for (const p of ps) {
+        if (g.variables.includes(p[0])) {
+          const first = p[0];
+          const firstPs = g.productions.get(first) || [];
+          for (const sp of firstPs) nextPs.push([...sp, ...p.slice(1)]);
+          anyChanged = true;
+        } else nextPs.push(p);
+      }
+      g.productions.set(v, nextPs);
+    }
+    dedup(g);
+  }
+  
+  // Try to restore original start name if safe
+  try {
+    const originalStart = (typeof input === 'string') ? parseTextGrammar(input).start : input.startVar;
+    restoreStartName(g, originalStart);
+  } catch(e) {}
+
+  steps.push(buildStep('Step 9: Final GNF enforcement', 'Completed final substitutions and restored start symbol name to ensure a professional GNF output.', null, g));
+
+  return steps;
+}
+
 /**
  * CYK Algorithm for String Parsing
  * @param {Object} g - Grammar in CNF

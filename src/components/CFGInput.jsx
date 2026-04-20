@@ -194,6 +194,9 @@ export default function CFGInput({ onConvert, error, isLoading, lastAction }) {
           <button className="btn-secondary flex-1" onClick={() => handleConvert('gnf')} disabled={isLoading}>
             {isLoading && lastAction === 'gnf' ? <span className="spin-loader"></span> : 'Convert to GNF'}
           </button>
+          <button className="btn-secondary flex-1" onClick={() => handleConvert('gnf-direct')} disabled={isLoading}>
+            {isLoading && lastAction === 'gnf-direct' ? <span className="spin-loader"></span> : 'Direct GNF'}
+          </button>
         </div>
 
         {error && (
